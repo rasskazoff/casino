@@ -3,6 +3,60 @@ import './App.css';
 import React, {useState, useEffect} from 'react'
 
 
+function Spin(props){
+
+    let rings = ['🍓','🍇','🍊','🥭']
+    let i = props.i
+
+    let ring = i>1 ? rings.slice(i).concat(rings.reverse().slice(-i)) : rings.slice(i)
+    let name = props.name != undefined ? props.name : 'ringEnd'
+    
+    return (
+        ring.map((ring)=><div className={name}>{ring}</div>)
+    )
+  }
+{/*
+function Ring(props){
+
+    if (!spin) {
+    return (
+        <>
+        <Spin index="0,1,2,3" name="ringEnd"/>
+        </>
+            )
+    } else if (spin && ring1 === undefined) {
+    return (
+        <>
+        <Spin index="0,1,2,3" name="ringMoving"/>
+        </>
+            )
+    } else if (ring1 >= 1 && ring1 <= 25 ) {
+    return (
+        <>
+        <Spin index="0,1,2,3" name="ringEnd"/>
+        </>
+            )  
+    } else if (ring1 > 25 && ring1 <= 50) {
+        return (
+            <>
+            <Spin index="1,2,3,0" name="ringEnd"/>
+            </>
+                )  
+        } else if (ring1 > 50 && ring1 <= 75) {
+            return (
+                <>
+                <Spin index="2,3,0,1" name="ringEnd"/>
+                </>
+                    )  
+            } else if (ring1 > 75 && ring1 <= 100) {
+                return (
+                    <>
+                    <Spin index="3,0,1,2" name="ringEnd"/>
+                    </>
+                        )  
+                }
+}*/}
+
 const App = ({id, owned, close, expires}) => {
 
     const [spin, setSpin] = useState(false)
@@ -19,18 +73,6 @@ const App = ({id, owned, close, expires}) => {
     useEffect(() => {
         win()
     }, [ring3])
-
-    function Spin(props){
-
-        let rings = ['🍓','🍇','🍊','🥭']
-        let i = props.index.split(',')
-        let ring = [rings[i[0]], rings[i[1]], rings[i[2]], rings[i[3]]]
-
-        return (
-            ring.map((ring)=><div className={props.name}>{ring}</div>)
-          
-        )
-      }
       
 
  function row1() {
@@ -38,37 +80,37 @@ const App = ({id, owned, close, expires}) => {
     if (!spin) {
     return (
         <>
-        <Spin index="0,1,2,3" name="ringEnd"/>
+        <Spin/>
         </>
             )
     } else if (spin && ring1 === undefined) {
     return (
         <>
-        <Spin index="0,1,2,3" name="ringMoving"/>
+        <Spin name="ringMoving"/>
         </>
             )
-    } else if (ring1 >= 1 && ring1 <= 50 ) {
+    } else if (ring1 >= 1 && ring1 <= 25 ) {
     return (
         <>
-        <Spin index="0,1,2,3" name="ringEnd"/>
+        <Spin />
         </>
             )  
-    } else if (ring1 > 50 && ring1 <= 75) {
+    } else if (ring1 > 25 && ring1 <= 50) {
         return (
             <>
-            <Spin index="1,2,3,0" name="ringEnd"/>
+            <Spin i="1"/>
             </>
                 )  
-        } else if (ring1 > 75 && ring1 <= 95) {
+        } else if (ring1 > 50 && ring1 <= 75) {
             return (
                 <>
-                <Spin index="2,3,0,1" name="ringEnd"/>
+                <Spin i="2"/>
                 </>
                     )  
-            } else if (ring1 > 95 && ring1 <= 100) {
+            } else if (ring1 > 75 && ring1 <= 100) {
                 return (
                     <>
-                    <Spin index="3,0,1,2" name="ringEnd"/>
+                    <Spin i="3"/>
                     </>
                         )  
                 }
@@ -77,39 +119,39 @@ const App = ({id, owned, close, expires}) => {
  function row2() {
 
     if (!spin) {
-    return (
-        <>
-        <Spin index="3,0,1,2" name="ringEnd"/>
-        </>
-            )
-    } else if (spin && ring2 === undefined) {
-    return (
-        <>
-        <Spin index="0,1,2,3" name="ringMoving"/>
-        </>
-            )
-    } else if (ring2 >= 1 && ring2 <= 50 ) {
         return (
             <>
-            <Spin index="0,1,2,3" name="ringEnd"/>
+            <Spin/>
+            </>
+                )
+        } else if (spin && ring2 === undefined) {
+        return (
+            <>
+            <Spin name="ringMoving"/>
+            </>
+                )
+        } else if (ring2 >= 1 && ring2 <= 25 ) {
+        return (
+            <>
+            <Spin />
             </>
                 )  
-        } else if (ring2 > 50 && ring2 <= 75) {
+        } else if (ring2 > 25 && ring2 <= 50) {
             return (
                 <>
-                <Spin index="1,2,3,0" name="ringEnd"/>
+                <Spin i="1"/>
                 </>
                     )  
-            } else if (ring2 > 75 && ring2 <= 95) {
+            } else if (ring2 > 50 && ring2 <= 75) {
                 return (
                     <>
-                    <Spin index="2,3,0,1" name="ringEnd"/>
+                    <Spin i="2"/>
                     </>
                         )  
-                } else if (ring2 > 95 && ring2 <= 100) {
+                } else if (ring2 > 75 && ring2 <= 100) {
                     return (
                         <>
-                        <Spin index="3,0,1,2" name="ringEnd"/>
+                        <Spin i="3"/>
                         </>
                             )  
                     }
@@ -119,69 +161,52 @@ const App = ({id, owned, close, expires}) => {
  function row3() {
 
     if (!spin) {
-    return (
-        <>
-        <Spin index="3,0,1,2" name="ringEnd"/>
-        </>
-            )
-    } else if (spin && ring3 === undefined) {
-    return (
-        <>
-        <Spin index="0,1,2,3" name="ringMoving"/>
-       { /*
-        <div className="ringMoving">🍓</div>
-        <div className="ringMoving">🍇</div>
-        <div className="ringMoving">🍊</div>
-        <div className="ringMoving">🍋</div>
-        <div className="ringMoving">🍍</div>
-        <div className="ringMoving">🥭</div>
-        */}
-        </>
-            )
-    } else if (ring3 >= 1 && ring3 <= 50 ) {
         return (
             <>
-            <Spin index="0,1,2,3" name="ringEnd"/>            
+            <Spin/>
+            </>
+                )
+        } else if (spin && ring3 === undefined) {
+        return (
+            <>
+            <Spin name="ringMoving"/>
+            </>
+                )
+        } else if (ring3 >= 1 && ring3 <= 25 ) {
+        return (
+            <>
+            <Spin />
             </>
                 )  
-        } else if (ring3 > 50 && ring3 <= 75) {
+        } else if (ring3 > 25 && ring3 <= 50) {
             return (
                 <>
-                <div className="ringEnd">🍇</div>
-                <div className="ringEnd">🍊</div>
-                <div className="ringEnd">🥭</div>
-                <div className="ringEnd">🍓</div>
+                <Spin i="1"/>
                 </>
                     )  
-            } else if (ring3 > 75 && ring3 <= 95) {
+            } else if (ring3 > 50 && ring3 <= 75) {
                 return (
                     <>
-                    <div className="ringEnd">🍊</div>
-                    <div className="ringEnd">🥭</div>
-                    <div className="ringEnd">🍓</div>
-                    <div className="ringEnd">🍇</div>
+                    <Spin i="2"/>
                     </>
                         )  
-                } else if (ring3 > 95 && ring3 <= 100) {
+                } else if (ring3 > 75 && ring3 <= 100) {
                     return (
                         <>
-                        <div className="ringEnd">🥭</div>
-                        <div className="ringEnd">🍓</div>
-                        <div className="ringEnd">🍇</div>
-                        <div className="ringEnd">🍊</div>
+                        <Spin i="3"/>
                         </>
                             )  
                     }
      }
 
      function win() {
-      if (ring1 <= 50 && ring2 <= 50 && ring3 <= 50 && ring1 !== undefined) {
+      if (ring1 <= 25 && ring2 <= 25 && ring3 <= 25 && ring1 !== undefined) {
           setPrice(1)
-      } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 !== undefined) {
+      } else if (ring1 > 25 && ring1 <= 50 && ring2 > 25 && ring2 <= 50 && ring3 > 25 && ring3 <= 50 && ring1 !== undefined) {
           setPrice(2)
-      } else if (ring1 > 75 && ring1 <= 95 && ring2 > 75 && ring2 <= 95 && ring3 > 75 && ring3 <= 95 && ring1 !== undefined) {
+      } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 !== undefined) {
           setPrice(3)
-      } else if (ring1 > 95 && ring1 <= 100 && ring2 > 95 && ring2 <= 100 && ring3 > 95 && ring3 <= 100 && ring1 !== undefined) {
+      } else if (ring1 > 75 && ring1 <= 100 && ring2 > 75 && ring2 <= 100 && ring3 > 75 && ring3 <= 100 && ring1 !== undefined) {
           setPrice(4)
       } else {
           setPrice(0)
@@ -216,16 +241,16 @@ function play() {
 
 
 function win() {
-    if (ring1 <= 50 && ring2 <= 50 && ring3 <= 50 && ring1 !== undefined) {
+    if (ring1 <= 25 && ring2 <= 25 && ring3 <= 25 && ring1 !== undefined) {
         setPrice(1)
         setBalance(balance + (input * 15))
-    } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 !== undefined) {
+    } else if (ring1 > 25 && ring1 <= 50 && ring2 > 25 && ring2 <= 50 && ring3 > 25 && ring3 <= 50 && ring1 !== undefined) {
         setPrice(2)
         setBalance(balance + (input * 20))
-    } else if (ring1 > 75 && ring1 <= 95 && ring2 > 75 && ring2 <= 95 && ring3 > 75 && ring3 <= 95 && ring1 !== undefined) {
+    } else if (ring1 > 50 && ring1 <= 75 && ring2 > 50 && ring2 <= 75 && ring3 > 50 && ring3 <= 75 && ring1 !== undefined) {
         setPrice(3)
         setBalance(balance + (input * 25))
-    } else if (ring1 > 95 && ring1 <= 100 && ring2 > 95 && ring2 <= 100 && ring3 > 95 && ring3 <= 100 && ring1 !== undefined) {
+    } else if (ring1 > 75 && ring1 <= 100 && ring2 > 75 && ring2 <= 100 && ring3 > 75 && ring3 <= 100 && ring1 !== undefined) {
         setPrice(4)
         setBalance(balance + jackpot)
         setJackpot(0)
