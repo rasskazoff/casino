@@ -9,11 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
     <Helmet>
-      <script src="https://telegram.org/js/telegram-web-app.js"></script>
-      <script>
-        let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-        tg.expand(); //расширяем на все окно
-      </script>
+      <script src="https://telegram.org/js/telegram-web-app.js" type="text/javascript"></script>
     </Helmet>
   </React.StrictMode>,
   document.getElementById('root')

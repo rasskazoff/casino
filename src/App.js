@@ -1,8 +1,11 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
 
-function Spin(props){
+    let tg = window.Telegram.WebApp
+    tg.expand()
 
+function Spin(props){
+    
     let rings = ['🍓','🍇','🍊','🥭']
     let i = props.i
 
