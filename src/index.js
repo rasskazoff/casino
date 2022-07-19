@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Helmet} from 'react-helmet';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Helmet>
-      <script src="https://telegram.org/js/telegram-web-app.js" type="text/javascript"></script>
-    </Helmet>
   </React.StrictMode>,
   document.getElementById('root')
 );

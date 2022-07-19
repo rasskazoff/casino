@@ -12,7 +12,14 @@ body {
   box-sizing: border-box;
 }
 
-@import url("https://use.typekit.net/yjs2lsy.css");
+@font-face {
+  font-family: 'DS-Crystal';
+    src:  url('./fonts/DS-Crystal.ttf.woff') format('woff'),
+    url('./fonts/DS-Crystal.ttf.svg#DS-Crystal') format('svg'),
+    url('./fonts/DS-Crystal.ttf.eot');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 .fullSlot {
@@ -42,21 +49,23 @@ body {
 }
 
 .price {
-  font-family: hydrophilia-iced,sans-serif;
+  font-family: 'DS-Crystal';
   font-weight: 400;
   font-style: normal;
   color: white;
-  background-color: rgb(10, 22, 39);
+  background: radial-gradient(rgb(0 255 242 / 10%), rgb(0 0 0));
   padding: 10px 0 10px 0;
   margin: 10px 0 10px 0;
   text-align: center;
-  border: solid 2px #ffd900;
+  border: solid 2px #ffffff;
   width: 97%;
   height: 50px;
   overflow: hidden;
   font-weight: 500;
   font-size: 1.2em;
   border-radius: 5px;
+  text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 90px #00fff2;
+  box-shadow: 0 0 5px #00fff2;
 }
 
 .priceInd {
