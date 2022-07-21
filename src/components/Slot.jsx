@@ -7,7 +7,7 @@ const Ring = (props)=>{
     let items_order = props.order>=0 ? sortArr(props.items, props.order) : sortArr(props.items, 0)
 
     return(
-        items_order.map((items_order)=><div className={styles}><img src={items_order.img} alt=""></img></div>)
+        items_order.map((items_order)=><div className={styles}>{items_order}</div>)
     )
 }
 
@@ -21,4 +21,5 @@ function sortArr(items,a){
     }
     return arr
 }
+
 export default Ring
